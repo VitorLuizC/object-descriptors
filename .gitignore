@@ -1,0 +1,16 @@
+# Finder's settings file (Mac).
+.DS_Store
+
+# Node.js modules folder.
+node_modules/
+
+# NPM's lockfile.
+# I'm using Yarn instead and it has it's own lockfile (yarn.lock).
+package-lock.json
+
+# Log files.
+*.log
+*.log.*
+
+# Generated sources folder.
+dist/
