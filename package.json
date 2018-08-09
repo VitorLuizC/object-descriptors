@@ -1,7 +1,7 @@
 {
   "name": "object-descriptors",
-  "version": "0.0.0",
-  "description": "",
+  "version": "0.1.0",
+  "description": "A pretty well typed `Object.getOwnPropertyDescriptors` polyfill.",
   "cdn": "dist/object-descriptors.js",
   "main": "dist/object-descriptors.cjs.js",
   "types": "index.d.ts",
@@ -21,6 +21,24 @@
     "build:bili": "bili index.js --format es,cjs,umd --banner --js buble",
     "build": "yarn build:typescript && yarn build:bili"
   },
+  "keywords": [
+    "Object.getOwnPropertyDescriptors",
+    "descriptor",
+    "property descriptor",
+    "property-descriptor",
+    "property-descriptors",
+    "properties",
+    "property",
+    "own-keys",
+    "keys",
+    "object",
+    "ES8",
+    "ES2017",
+    "shim",
+    "polyfill",
+    "getOwnPropertyDescriptor",
+    "es-shim API"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/VitorLuizC/object-descriptors.git"
