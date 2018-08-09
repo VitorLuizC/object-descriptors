@@ -1,14 +1,11 @@
 {
   "compilerOptions": {
-    "target": "es2015",
-
-    // Settings for module.
-    "module": "es2015",
+    "moduleResolution": "node",
 
     // Settings for generating type definitions.
     "lib": [ "es2018" ],
     "strict": true,
-    "declaration": true
-  },
-  "files": [ "index.ts" ]
+    "declaration": true,
+    "skipLibCheck": true
+  }
 }

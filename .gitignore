@@ -18,3 +18,4 @@ dist/
 # Generated JavaScript sources & type definitions files.
 index.js
 index.d.ts
+index.spec.js

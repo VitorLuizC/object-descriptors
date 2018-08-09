@@ -14,8 +14,12 @@
     "index.d.ts"
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc && bili index.js --format es,cjs,umd --banner --js buble"
+    "test:build": "tsc index.spec.ts --lib es2018 --target es2015 --skipLibCheck --moduleResolution node",
+    "pretest": "yarn build && yarn test:build",
+    "test": "ava index.spec.js --verbose --color",
+    "build:typescript": "tsc index.ts --lib es2018 --target es2015 --strict --declaration",
+    "build:bili": "bili index.js --format es,cjs,umd --banner --js buble",
+    "build": "yarn build:typescript && yarn build:bili"
   },
   "repository": {
     "type": "git",
@@ -32,6 +36,7 @@
   },
   "homepage": "https://github.com/VitorLuizC/object-descriptors#readme",
   "devDependencies": {
+    "ava": "^0.25.0",
     "bili": "^3.1.2",
     "typescript": "^3.0.1"
   }
