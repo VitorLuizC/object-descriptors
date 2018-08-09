@@ -1,18 +1,18 @@
 /**
  * A collection of object keys.
  */
-export type PropertyKeys <T extends Object> = (PropertyKey & keyof T)[];
+type PropertyKeys <T extends Object> = (PropertyKey & keyof T)[];
 
 /**
  * A collection of object keys which match a type.
  */
-export type TypedPropertyKeys <T extends Object, U> = Extract<keyof T, U>[];
+type TypedPropertyKeys <T extends Object, U> = Extract<keyof T, U>[];
 
 /**
  * Get a collection of keys from an object.
  * @param object
  */
-export const getKeys = <T extends Object> (object: T): PropertyKeys<T> => {
+const getKeys = <T extends Object> (object: T): PropertyKeys<T> => {
   if (typeof Reflect === 'object' && typeof Reflect.ownKeys === 'function')
     return Reflect.ownKeys(object) as PropertyKeys<T>;
 
@@ -38,7 +38,7 @@ export type PropertyDescriptors <T> = PropertyDescriptorMap & {
  * Get an object with all object property descriptors.
  * @param object
  */
-export const getDescriptors = <T extends Object> (object: T): PropertyDescriptors<T> => {
+const getDescriptors = <T extends Object> (object: T): PropertyDescriptors<T> => {
   if (typeof Object.getOwnPropertyDescriptors === 'function')
     return Object.getOwnPropertyDescriptors(object) as PropertyDescriptors<T>;
 
