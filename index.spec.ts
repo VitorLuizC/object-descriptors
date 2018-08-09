@@ -1,12 +1,21 @@
 import test from 'ava';
-import descriptors, { PropertyDescriptors } from './';
+import descriptors from './';
 
 const input = {
   name: 'Vitor',
   birth: new Date(1996, 2, 28)
 };
 
-const output: PropertyDescriptors<typeof input> = {
+const symbol = Symbol('SECRET');
+
+Object.defineProperty(input, symbol, {
+  configurable: false,
+  enumerable: false,
+  writable: false,
+  value: 0
+});
+
+const output = {
   name: {
     configurable: true,
     enumerable: true,
@@ -18,6 +27,12 @@ const output: PropertyDescriptors<typeof input> = {
     enumerable: true,
     writable: true,
     value: new Date(1996, 2, 28)
+  },
+  [symbol]: {
+    configurable: false,
+    enumerable: false,
+    writable: false,
+    value: 0
   }
 };
 
@@ -26,9 +41,7 @@ test('Module exposes a function', (context) => {
 });
 
 test('Returns property descriptors', (context) => {
-  const value = descriptors(input);
-
-  context.deepEqual(value, output);
+  context.deepEqual(descriptors(input), output);
 });
 
 test('Polyfills Object.getOwnPropertyDescriptors', (context) => {
@@ -58,7 +71,7 @@ test('Polyfills Reflect.ownKeys', (context) => {
   context.deepEqual(value, output);
 });
 
-test('Polyfills Object.getOwnPropertySymbols', (context) => {
+test('Polyfills Object.getOwnPropertySymbols + not work for symbols', (context) => {
   const getOwnKeys = Reflect.ownKeys;
   const getOwnPropertySymbols = Object.getOwnPropertySymbols;
   const getOwnPropertyDescriptors = Object.getOwnPropertyDescriptors;
@@ -68,10 +81,14 @@ test('Polyfills Object.getOwnPropertySymbols', (context) => {
   delete Object.getOwnPropertyDescriptors;
 
   const value = descriptors(input);
+  const expected = { ...output };
+
+  delete expected[symbol];
 
   Reflect.ownKeys = getOwnKeys;
   Object.getOwnPropertySymbols = getOwnPropertySymbols;
   Object.getOwnPropertyDescriptors = getOwnPropertyDescriptors;
 
-  context.deepEqual(value, output);
+  context.false(value.hasOwnProperty(symbol));
+  context.deepEqual(value, expected);
 });
