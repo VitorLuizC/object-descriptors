@@ -2,7 +2,17 @@
   "name": "object-descriptors",
   "version": "0.0.0",
   "description": "",
-  "main": "index.js",
+  "cdn": "dist/object-descriptors.js",
+  "main": "dist/object-descriptors.cjs.js",
+  "types": "index.d.ts",
+  "unpkg": "dist/object-descriptors.js",
+  "module": "dist/object-descriptors.es.js",
+  "jsdelivr": "dist/object-descriptors.js",
+  "umd:main": "dist/object-descriptors.js",
+  "files": [
+    "dist/",
+    "index.d.ts"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc && bili index.js --format es,cjs,umd --banner --js buble"
