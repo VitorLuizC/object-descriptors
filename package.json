@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc && bili index.js --format es,cjs,umd --banner --js buble"
   },
   "repository": {
     "type": "git",
@@ -19,5 +20,9 @@
   "bugs": {
     "url": "https://github.com/VitorLuizC/object-descriptors/issues"
   },
-  "homepage": "https://github.com/VitorLuizC/object-descriptors#readme"
+  "homepage": "https://github.com/VitorLuizC/object-descriptors#readme",
+  "devDependencies": {
+    "bili": "^3.1.2",
+    "typescript": "^3.0.1"
+  }
 }

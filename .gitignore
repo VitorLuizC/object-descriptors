@@ -14,3 +14,7 @@ package-lock.json
 
 # Generated sources folder.
 dist/
+
+# Generated JavaScript sources & type definitions files.
+index.js
+index.d.ts
