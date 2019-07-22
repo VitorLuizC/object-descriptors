@@ -1,6 +1,6 @@
 {
   "name": "object-descriptors",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A pretty well typed `Object.getOwnPropertyDescriptors` polyfill.",
   "cdn": "dist/index.umd.min.js",
   "main": "dist/index.js",
