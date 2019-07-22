@@ -2,23 +2,23 @@
   "name": "object-descriptors",
   "version": "0.1.0",
   "description": "A pretty well typed `Object.getOwnPropertyDescriptors` polyfill.",
-  "cdn": "dist/object-descriptors.js",
-  "main": "dist/object-descriptors.cjs.js",
+  "cdn": "dist/index.umd.min.js",
+  "main": "dist/index.js",
   "types": "index.d.ts",
-  "unpkg": "dist/object-descriptors.js",
-  "module": "dist/object-descriptors.es.js",
-  "jsdelivr": "dist/object-descriptors.js",
-  "umd:main": "dist/object-descriptors.js",
+  "unpkg": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "jsdelivr": "dist/index.umd.min.js",
+  "umd:main": "dist/index.umd.min.js",
   "files": [
     "dist/",
     "index.d.ts"
   ],
   "scripts": {
-    "test:build": "tsc index.spec.ts --lib es2018 --target es2015 --skipLibCheck --moduleResolution node",
+    "test:build": "tsc index.spec.ts --lib es2019 --target es2019 --skipLibCheck --moduleResolution node",
     "pretest": "yarn build && yarn test:build",
     "test": "ava index.spec.js --verbose --color",
-    "build:typescript": "tsc index.ts --lib es2018 --target es2015 --strict --declaration",
-    "build:bili": "bili index.js --format es,cjs,umd --banner --js buble",
+    "build:typescript": "tsc index.ts --lib es2019 --target es2019 --strict --declaration",
+    "build:bili": "bili index.js --format es,cjs,umd,umd-min --banner --minimal --module-name objectDescriptors",
     "build": "yarn build:typescript && yarn build:bili"
   },
   "keywords": [
@@ -54,8 +54,8 @@
   },
   "homepage": "https://github.com/VitorLuizC/object-descriptors#readme",
   "devDependencies": {
-    "ava": "^0.25.0",
-    "bili": "^3.1.2",
-    "typescript": "^3.0.1"
+    "ava": "^2.2.0",
+    "bili": "^4.8.0",
+    "typescript": "^3.5.3"
   }
 }
