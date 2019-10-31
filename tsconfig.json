@@ -3,7 +3,7 @@
     "moduleResolution": "node",
 
     // Settings for generating type definitions.
-    "lib": [ "es2019" ],
+    "lib": ["es2019"],
     "strict": true,
     "declaration": true,
     "skipLibCheck": true

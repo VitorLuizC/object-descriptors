@@ -26,12 +26,12 @@ import getDescriptors, { PropertyDescriptors } from 'object-descriptors';
 
 const value = {
   name: 'Ryan',
-  sayName () {
+  sayName() {
     console.log(this.name);
-  }
+  },
 };
 
-let descriptors: PropertyDescriptors<{ name: string; sayName: () => void; }>;
+let descriptors: PropertyDescriptors<{ name: string; sayName: () => void }>;
 
 descriptors = getDescriptors(value);
 
