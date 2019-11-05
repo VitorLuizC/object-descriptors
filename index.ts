@@ -45,16 +45,18 @@ const getDescriptors = <T extends object>(
   if (typeof Object.getOwnPropertyDescriptors === 'function')
     return Object.getOwnPropertyDescriptors(object) as PropertyDescriptors<T>;
 
-  const descriptors = getKeys(object).reduce(
+  if (object === null) throw new TypeError('null is not an object');
+
+  if (object === undefined) throw new TypeError('undefined is not an object');
+
+  return getKeys(object).reduce(
     (descriptors, key) => {
       const descriptor = Object.getOwnPropertyDescriptor(object, key);
       if (descriptor) descriptors[key] = descriptor;
       return descriptors;
     },
     {} as PropertyDescriptors<T>,
-  ) as PropertyDescriptors<T>;
-
-  return descriptors;
+  );
 };
 
 export default getDescriptors;
