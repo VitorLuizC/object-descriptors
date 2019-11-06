@@ -1,11 +1,14 @@
 {
   "compilerOptions": {
+    "module": "commonjs",
     "moduleResolution": "node",
+    "esModuleInterop": true,
 
     // Settings for generating type definitions.
-    "lib": ["es2019"],
+    "lib": ["esnext"],
     "strict": true,
     "declaration": true,
     "skipLibCheck": true
-  }
+  },
+  "files": ["index.ts"]
 }

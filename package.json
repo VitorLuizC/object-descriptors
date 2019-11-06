@@ -14,9 +14,7 @@
     "index.d.ts"
   ],
   "scripts": {
-    "test:build": "tsc index.spec.ts --lib es2019 --target es2019 --skipLibCheck --moduleResolution node",
-    "pretest": "yarn build && yarn test:build",
-    "test": "ava index.spec.js --verbose --color",
+    "test": "jest",
     "build:typescript": "tsc index.ts --lib es2019 --target es2019 --strict --declaration",
     "build:bili": "bili index.js --format es,cjs,umd,umd-min --banner --minimal --module-name objectDescriptors",
     "build": "yarn build:typescript && yarn build:bili"
@@ -54,8 +52,10 @@
   },
   "homepage": "https://github.com/VitorLuizC/object-descriptors#readme",
   "devDependencies": {
-    "ava": "^2.2.0",
+    "@types/jest": "^24.0.22",
     "bili": "^4.8.0",
+    "jest": "^24.9.0",
+    "ts-jest": "^24.1.0",
     "typescript": "^3.5.3"
   }
 }

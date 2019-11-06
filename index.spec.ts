@@ -1,4 +1,3 @@
-import test from 'ava';
 import descriptors from './';
 
 const input = {
@@ -36,15 +35,16 @@ const output = {
   },
 };
 
-test('Module exposes a function', context => {
-  context.is(typeof descriptors, 'function');
+it('Module exposes a function', () => {
+  expect(typeof descriptors).toBe('function');
 });
 
-test('Returns property descriptors', context => {
-  context.deepEqual(descriptors(input), output);
+it('Returns property descriptors', () => {
+  const value = descriptors(input);
+  expect(value).toEqual(output);
 });
 
-test('Polyfills Object.getOwnPropertyDescriptors', context => {
+it('Polyfills Object.getOwnPropertyDescriptors', () => {
   const getOwnPropertyDescriptors = Object.getOwnPropertyDescriptors;
 
   delete Object.getOwnPropertyDescriptors;
@@ -53,10 +53,10 @@ test('Polyfills Object.getOwnPropertyDescriptors', context => {
 
   Object.getOwnPropertyDescriptors = getOwnPropertyDescriptors;
 
-  context.deepEqual(value, output);
+  expect(value).toEqual(output);
 });
 
-test('Polyfills Reflect.ownKeys', context => {
+it('Polyfills Reflect.ownKeys', () => {
   const getOwnKeys = Reflect.ownKeys;
   const getOwnPropertyDescriptors = Object.getOwnPropertyDescriptors;
 
@@ -68,10 +68,10 @@ test('Polyfills Reflect.ownKeys', context => {
   Reflect.ownKeys = getOwnKeys;
   Object.getOwnPropertyDescriptors = getOwnPropertyDescriptors;
 
-  context.deepEqual(value, output);
+  expect(value).toEqual(output);
 });
 
-test('Polyfills Object.getOwnPropertySymbols + not work for symbols', context => {
+it('Polyfills Object.getOwnPropertySymbols + not work for symbols', () => {
   const getOwnKeys = Reflect.ownKeys;
   const getOwnPropertySymbols = Object.getOwnPropertySymbols;
   const getOwnPropertyDescriptors = Object.getOwnPropertyDescriptors;
@@ -81,14 +81,12 @@ test('Polyfills Object.getOwnPropertySymbols + not work for symbols', context =>
   delete Object.getOwnPropertyDescriptors;
 
   const value = descriptors(input);
-  const expected = { ...output };
-
-  delete expected[symbol];
+  const { [symbol]: _, ...outputWithoutSymbol } = output;
 
   Reflect.ownKeys = getOwnKeys;
   Object.getOwnPropertySymbols = getOwnPropertySymbols;
   Object.getOwnPropertyDescriptors = getOwnPropertyDescriptors;
 
-  context.false(value.hasOwnProperty(symbol));
-  context.deepEqual(value, expected);
+  expect(value).not.toHaveProperty([symbol]);
+  expect(value).toEqual(outputWithoutSymbol);
 });
