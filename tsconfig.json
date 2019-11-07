@@ -1,14 +1,20 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
-    "moduleResolution": "node",
-    "esModuleInterop": true,
+    "target": "esnext",
+    "lib": ["esnext", "dom"],
 
-    // Settings for generating type definitions.
-    "lib": ["esnext"],
-    "strict": true,
-    "declaration": true,
-    "skipLibCheck": true
-  },
-  "files": ["index.ts"]
+    // Configuration for modules.
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+
+    // Configuration for type strictness.
+    "alwaysStrict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "strict": true
+  }
 }

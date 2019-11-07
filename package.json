@@ -4,20 +4,18 @@
   "description": "A pretty well typed `Object.getOwnPropertyDescriptors` polyfill.",
   "cdn": "dist/index.umd.min.js",
   "main": "dist/index.js",
-  "types": "index.d.ts",
+  "types": "types/index.d.ts",
   "unpkg": "dist/index.js",
   "module": "dist/index.esm.js",
   "jsdelivr": "dist/index.umd.min.js",
   "umd:main": "dist/index.umd.min.js",
   "files": [
     "dist/",
-    "index.d.ts"
+    "types/"
   ],
   "scripts": {
     "test": "jest",
-    "build:typescript": "tsc index.ts --lib es2019 --target es2019 --strict --declaration",
-    "build:bili": "bili index.js --format es,cjs,umd,umd-min --banner --minimal --module-name objectDescriptors",
-    "build": "yarn build:typescript && yarn build:bili"
+    "build": "bili"
   },
   "keywords": [
     "Object.getOwnPropertyDescriptors",
@@ -55,6 +53,7 @@
     "@types/jest": "^24.0.22",
     "bili": "^4.8.0",
     "jest": "^24.9.0",
+    "rollup-plugin-typescript2": "^0.25.2",
     "ts-jest": "^24.1.0",
     "typescript": "^3.5.3"
   }
