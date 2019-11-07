@@ -35,8 +35,16 @@ const output = {
   },
 };
 
-it('Module exposes a function', () => {
-  expect(typeof descriptors).toBe('function');
+it('Throws TypeError if value is `null`', () => {
+  expect(() => {
+    descriptors((null as unknown) as object);
+  }).toThrow(new TypeError('Cannot convert undefined or null to object'));
+});
+
+it('Throws TypeError if value is `undefinned`', () => {
+  expect(() => {
+    descriptors((undefined as unknown) as object);
+  }).toThrow(new TypeError('Cannot convert undefined or null to object'));
 });
 
 it('Returns property descriptors', () => {

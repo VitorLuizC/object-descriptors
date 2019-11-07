@@ -45,9 +45,8 @@ const getDescriptors = <T extends object>(
   if (typeof Object.getOwnPropertyDescriptors === 'function')
     return Object.getOwnPropertyDescriptors(object) as PropertyDescriptors<T>;
 
-  if (object === null) throw new TypeError('null is not an object');
-
-  if (object === undefined) throw new TypeError('undefined is not an object');
+  if (object === null || object === undefined)
+    throw new TypeError('Cannot convert undefined or null to object');
 
   return getKeys(object).reduce(
     (descriptors, key) => {
