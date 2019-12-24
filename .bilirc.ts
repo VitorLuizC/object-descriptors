@@ -2,7 +2,7 @@ import { Config as Configuration } from 'bili';
 
 const configuration: Configuration = {
   banner: true,
-  input: 'index.ts',
+  input: './src/index.ts',
   output: {
     format: ['es', 'cjs', 'umd', 'umd-min'],
     moduleName: 'objectDescriptors',
