@@ -55,6 +55,7 @@ it('Returns property descriptors', () => {
 it('Polyfills Object.getOwnPropertyDescriptors', () => {
   const getOwnPropertyDescriptors = Object.getOwnPropertyDescriptors;
 
+  // @ts-expect-error
   delete Object.getOwnPropertyDescriptors;
 
   const value = descriptors(input);
@@ -68,7 +69,9 @@ it('Polyfills Reflect.ownKeys', () => {
   const getOwnKeys = Reflect.ownKeys;
   const getOwnPropertyDescriptors = Object.getOwnPropertyDescriptors;
 
+  // @ts-expect-error
   delete Reflect.ownKeys;
+  // @ts-expect-error
   delete Object.getOwnPropertyDescriptors;
 
   const value = descriptors(input);
@@ -84,8 +87,11 @@ it('Polyfills Object.getOwnPropertySymbols + not work for symbols', () => {
   const getOwnPropertySymbols = Object.getOwnPropertySymbols;
   const getOwnPropertyDescriptors = Object.getOwnPropertyDescriptors;
 
+  // @ts-expect-error
   delete Reflect.ownKeys;
+  // @ts-expect-error
   delete Object.getOwnPropertySymbols;
+  // @ts-expect-error
   delete Object.getOwnPropertyDescriptors;
 
   const value = descriptors(input);
